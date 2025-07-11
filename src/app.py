@@ -38,6 +38,45 @@ activities = {
         "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
         "max_participants": 30,
         "participants": ["john@mergington.edu", "olivia@mergington.edu"]
+    },
+    # Sports Activities
+    "Basketball Team": {
+        "description": "Competitive basketball training and inter-school tournaments",
+        "schedule": "Mondays and Wednesdays, 4:00 PM - 6:00 PM",
+        "max_participants": 15,
+        "participants": ["alex@mergington.edu", "maya@mergington.edu"]
+    },
+    "Swimming Club": {
+        "description": "Learn swimming techniques and participate in swim meets",
+        "schedule": "Tuesdays and Thursdays, 3:00 PM - 4:30 PM",
+        "max_participants": 25,
+        "participants": ["lucas@mergington.edu"]
+    },
+    # Artistic Activities
+    "Drama Club": {
+        "description": "Explore acting, scriptwriting, and stage production",
+        "schedule": "Thursdays, 3:30 PM - 5:30 PM",
+        "max_participants": 18,
+        "participants": ["isabella@mergington.edu", "ethan@mergington.edu"]
+    },
+    "Art Studio": {
+        "description": "Painting, drawing, and mixed media artistic expression",
+        "schedule": "Fridays, 2:30 PM - 4:30 PM",
+        "max_participants": 16,
+        "participants": ["zoe@mergington.edu"]
+    },
+    # Intellectual Activities
+    "Debate Team": {
+        "description": "Develop critical thinking and public speaking through competitive debate",
+        "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
+        "max_participants": 14,
+        "participants": ["noah@mergington.edu", "ava@mergington.edu"]
+    },
+    "Science Olympiad": {
+        "description": "Compete in various science and engineering challenges",
+        "schedule": "Saturdays, 10:00 AM - 12:00 PM",
+        "max_participants": 20,
+        "participants": ["liam@mergington.edu", "grace@mergington.edu", "owen@mergington.edu"]
     }
 }
 
@@ -55,7 +94,7 @@ def get_activities():
 @app.post("/activities/{activity_name}/signup")
 def signup_for_activity(activity_name: str, email: str):
     """Sign up a student for an activity"""
-    # Validate activity exists
+    # Validate student is not already signed up
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
 
